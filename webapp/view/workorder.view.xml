@@ -1,0 +1,51 @@
+<mvc:View
+    xmlns:mvc="sap/ui/core/mvc/Controller"
+    xmlns="sap.m"
+    xmlns:core="sap/ui/core"
+    controllerName="workorder.controller.workorder">
+
+    <!-- Page -->
+    <Page title="Work Order Data">
+        <Button text="Refrest Data" press=".onRefreshPress"></Button>
+        <!-- Table to display the API Data -->
+        <Table id="messageTable" inset="false" items="{apiData>/}" autoPopinMode="true">
+            <!-- Table Columns -->
+            <columns>
+                <Column>
+                    <Text text="Correlation Id" />
+                </Column>
+                <Column>
+                    <Text text="Request Id" />
+                </Column>
+                <Column hAlign="Initial">
+                    <Text text="Error" />
+                </Column>
+                <Column>
+                    <Text text="Message" />
+                </Column>
+                <Column>
+                    <Text text="Timestamp" />
+                </Column>
+            </columns>
+
+            <!-- Table Rows -->
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <!-- Binding the values of each row item -->
+                        <Text text="{apiData>CorrelationId}" />
+                        <Text text="{apiData>RequestId}" />
+                        <!-- <Text text="{= ${apiData>Message/HasErrors} ? 'Error occurred' : 'No errors'}" /> -->
+                        <StandardListItem icon="{= ${apiData>Message/HasErrors} ? 'sap-icon://error' : 'sap-icon://sys-enter-2'}"
+                        info="{= ${apiData>Message/HasErrors} ? 'Error occurred' : 'No errors'}"
+                        infoState="{= ${apiData>Message/HasErrors} ? 'Error' : 'Success'}"
+                         ></StandardListItem>
+                        <Button text="Show Details" press=".onShowMessageDetails"></Button>
+                        <Text text="{path: 'apiData>Timestamp', formatter: '.formatter.formatDate'}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </Page>
+
+</mvc:View>

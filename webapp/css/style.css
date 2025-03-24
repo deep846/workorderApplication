@@ -1,0 +1,21 @@
+/* Add this to your CSS file */
+
+.padding{
+    padding: 20px;
+}
+.mb{
+    margin-bottom: 4px;
+}
+.mu{
+    margin-top : 4px;
+}
+.textBold{
+    text-decoration: underline rgb(179, 123, 2);
+    color: rgb(129, 88, 2);
+}
+
+.bgcolor{
+    border-radius: 5px;
+    background-color: rgb(243, 216, 44);
+    margin: 2px;
+}
